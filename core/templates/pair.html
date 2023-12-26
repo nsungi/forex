@@ -1,0 +1,203 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    
+{% endblock  %}
+
+
+{% block content %}
+    
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Trading Pairs in Forex Market</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #009688;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #009688;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        /* Add more styles as needed */
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="text-white">Real Trading Pairs in Forex Market</h1>
+    </header>
+
+    <main>
+
+        <!-- Section: Understanding Currency Pairs -->
+        <section>
+            <h2>Understanding Currency Pairs</h2>
+            <p>The forex market operates by trading currency pairs. A currency pair consists of two currencies, where one is being bought, and the other is being sold. The first currency is known as the base currency, and the second currency is the quote currency.</p>
+            <p>For example, in the currency pair <strong>EUR/USD</strong>, the Euro (EUR) is the base currency, and the U.S. Dollar (USD) is the quote currency. The exchange rate represents the amount of the quote currency needed to purchase one unit of the base currency.</p>
+            <img src="currency-pairs.jpg" alt="Understanding Currency Pairs" />
+            <p>Currency pairs are categorized into three main types: major pairs, minor pairs, and exotic pairs.</p>
+        </section>
+
+        <!-- Section: Major Currency Pairs -->
+        <section>
+            <h2>Major Currency Pairs</h2>
+            <p>Major pairs are the most traded and liquid currencies in the forex market. They include:</p>
+            <ul>
+                <li><strong>EUR/USD:</strong> Euro/US Dollar</li>
+                <li><strong>USD/JPY:</strong> US Dollar/Japanese Yen</li>
+                <li><strong>GBP/USD:</strong> British Pound/US Dollar</li>
+                <li><strong>USD/CHF:</strong> US Dollar/Swiss Franc</li>
+                <li><strong>AUD/USD:</strong> Australian Dollar/US Dollar</li>
+                <li><strong>NZD/USD:</strong> New Zealand Dollar/US Dollar</li>
+                <li><strong>USD/CAD:</strong> US Dollar/Canadian Dollar</li>
+            </ul>
+            <img src="major-currency-pairs.jpg" alt="Major Currency Pairs" />
+            <p>Major pairs are characterized by high liquidity, tight spreads, and are often influenced by global economic events.</p>
+        </section>
+
+        <!-- Section: Minor Currency Pairs -->
+        <section>
+            <h2>Minor Currency Pairs</h2>
+            <p>Minor pairs, also known as cross-currency pairs, do not include the US Dollar. They are formed by combining two major currencies:</p>
+            <ul>
+                <li><strong>EUR/GBP:</strong> Euro/British Pound</li>
+                <li><strong>EUR/AUD:</strong> Euro/Australian Dollar</li>
+                <li><strong>GBP/JPY:</strong> British Pound/Japanese Yen</li>
+                <li><strong>NZD/CAD:</strong> New Zealand Dollar/Canadian Dollar</li>
+            </ul>
+            <img src="minor-currency-pairs.jpg" alt="Minor Currency Pairs" />
+            <p>Minor pairs offer opportunities for diversification and may have different trading characteristics compared to major pairs.</p>
+        </section>
+
+        <!-- Section: Exotic Currency Pairs -->
+        <section>
+            <h2>Exotic Currency Pairs</h2>
+            <p>Exotic pairs involve one major currency and one currency from a developing or smaller economy:</p>
+            <ul>
+                <li><strong>USD/TRY:</strong> US Dollar/Turkish Lira</li>
+                <li><strong>EUR/TRY:</strong> Euro/Turkish Lira</li>
+                <li><strong>USD/SEK:</strong> US Dollar/Swedish Krona</li>
+                <li><strong>USD/ZAR:</strong> US Dollar/South African Rand</li>
+            </ul>
+            <img src="exotic-currency-pairs.jpg" alt="Exotic Currency Pairs" />
+            <p>Exotic pairs are characterized by lower liquidity and higher spreads. They are more susceptible to market volatility.</p>
+        </section>
+
+        <!-- Section: Factors Influencing Currency Pair Movements -->
+        <section>
+            <h2>Factors Influencing Currency Pair Movements</h2>
+            <p>The value of currency pairs is influenced by various factors, including:</p>
+            <ul>
+                <li><strong>Economic Indicators:</strong> GDP, employment rates, and inflation impact currency values.</li>
+                <li><strong>Interest Rates:</strong> Central banks' decisions on interest rates affect currency pair movements.</li>
+                <li><strong>Political Stability:</strong> Political events and stability impact currency values.</li>
+                <li><strong>Market Sentiment:</strong> Traders' perceptions and emotions influence short-term currency movements.</li>
+            </ul>
+            <img src="currency-movements.jpg" alt="Factors Influencing Currency Pair Movements" />
+            <p>Understanding these factors is crucial for successful forex trading and analyzing currency pair movements.</p>
+        </section>
+
+        <!-- Section: Real-Time Currency Quotes -->
+        <section>
+            <h2>Real-Time Currency Quotes</h2>
+            <p>Stay updated with live quotes for major currency pairs:</p>
+            <ul>
+                <li><strong>EUR/USD:</strong> <span id="eurusd-quote">Fetching...</span></li>
+                <li><strong>USD/JPY:</strong> <span id="usdjpy-quote">Fetching...</span></li>
+                <!-- Add more currency pairs as needed -->
+            </ul>
+            <script>
+                // Use JavaScript to fetch and update real-time quotes
+                // Example using a hypothetical API, replace with your actual API calls
+                fetch('https://metatrade4.com/quotes/eurusd')
+                    .then(response => response.json())
+                    .then(data => document.getElementById('eurusd-quote').textContent = data.quote);
+
+                fetch('https://metatrade4.com/quotes/usdjpy')
+                    .then(response => response.json())
+                    .then(data => document.getElementById('usdjpy-quote').textContent = data.quote);
+                // Add more fetch requests for other currency pairs
+            </script>
+        </section>
+
+        <!-- Section: Additional Information on Currency Pairs -->
+        <section>
+            <h2>Additional Information on Currency Pairs</h2>
+            <p>Explore detailed information on major currency pairs:</p>
+            <div class="currency-details">
+                <div class="pair-details">
+                    <h3>EUR/USD</h3>
+                    <p>Historical Performance: 1-year return, volatility</p>
+                    <p>Recent Market News: Eurozone economic updates, USD policy changes</p>
+                </div>
+                <div class="pair-details">
+                    <h3>USD/JPY</h3>
+                    <p>Historical Performance: 1-year return, volatility</p>
+                    <p>Recent Market News: Japan economic indicators, USD policy changes</p>
+                </div>
+                <!-- Add more pair details as needed -->
+            </div>
+        </section>
+
+        <!-- Section: Live Trading Pairs -->
+        <section>
+            <h2>Live Trading Pairs</h2>
+            <p>Experience real-time trading with live charts and order books:</p>
+            <!-- Embed your live trading platform here -->
+            <iframe src="https://s3.tradingview.com" width="100%" height="600" frameborder="0"></iframe>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
+
+
+
+{% endblock  %}

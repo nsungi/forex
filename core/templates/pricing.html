@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+
+{% block title %} Our Forex Trading Pricing {% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .pricing-plans-section {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .pricing-plans {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .plan {
+            flex: 0 1 30%;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .plan:hover {
+            transform: scale(1.05);
+        }
+
+        .plan h3 {
+            color: #333;
+        }
+
+        .plan p {
+            color: #666;
+        }
+
+        .features {
+            margin-top: 20px;
+        }
+
+        .features ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .features li {
+            margin-bottom: 8px;
+        }
+
+        .compare-plans-section {
+            margin-top: 40px;
+            max-width: 100%;
+            overflow-x: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .compare-table {
+            margin: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .compare-table th {
+            background-color: #333;
+            color: white;
+        }
+
+        @media (max-width: 800px) {
+            .plan {
+                flex: 0 1 45%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .plan {
+                flex: 0 1 100%;
+            }
+        }
+    </style>
+    <title>Our Forex Trading Pricing</title>
+</head>
+
+<body>
+    <header>
+        <h1>Choose the Right Plan for Your Trading Journey</h1>
+    </header>
+
+    <section class="pricing-plans-section">
+        <h2>Pricing Plans</h2>
+        <div class="pricing-plans">
+            <div class="plan">
+                <h3>Basic Plan</h3>
+                <p>For beginners looking to explore forex trading.</p>
+                <p>Price: $19.99/month</p>
+                <div class="features">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Access to educational materials</li>
+                        <li>Limited market analysis</li>
+                        <li>Email support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="plan">
+                <h3>Standard Plan</h3>
+                <p>Our most popular plan for intermediate traders.</p>
+                <p>Price: $49.99/month</p>
+                <div class="features">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Comprehensive market analysis</li>
+                        <li>Live webinars and seminars</li>
+                        <li>24/7 customer support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="plan">
+                <h3>Premium Plan</h3>
+                <p>For advanced traders seeking advanced tools and insights.</p>
+                <p>Price: $99.99/month</p>
+                <div class="features">
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Personalized trading strategies</li>
+                        <li>One-on-one consultations</li>
+                        <li>Premium customer support</li>
+                        <li>Access to exclusive research</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="compare-plans-section">
+        <h2>Compare Plans</h2>
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Basic Plan</th>
+                    <th>Standard Plan</th>
+                    <th>Premium Plan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Price</td>
+                    <td>$19.99/month</td>
+                    <td>$49.99/month</td>
+                    <td>$99.99/month</td>
+                </tr>
+                <tr>
+                    <td>Market Analysis</td>
+                    <td>Limited</td>
+                    <td>Comprehensive</td>
+                    <td>Advanced</td>
+                </tr>
+                <tr>
+                    <td>Webinars</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Consultations</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Exclusive Research</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+
+{% endblock %}
