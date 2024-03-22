@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    FAQ - Forex Trading
+{% endblock %}
+
+{% block content %}
+<style>
+  
+
+    #faq-section {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+        color: #333;
+    }
+
+    h2 {
+        margin-top: 20px;
+    }
+
+    .faq-item {
+        margin-bottom: 20px;
+    }
+
+    .question {
+        font-weight: bold;
+    }
+
+    .answer {
+        margin-top: 10px;
+    }
+
+    @media only screen and (max-width: 1200px) {
+        #faq-section {
+            padding: 15px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .faq-item {
+            margin-bottom: 15px;
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        .faq-item {
+            margin-bottom: 10px;
+        }
+    }
+</style>
+
+<div id="faq-section">
+
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-item">
+        <div class="question">Q: What is forex trading?</div>
+        <div class="answer">A: Forex trading, also known as foreign exchange trading, involves the buying and selling of currency pairs in the foreign exchange market with the aim of making a profit.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: How do I get started with forex trading?</div>
+        <div class="answer">A: To get started with forex trading, you need to choose a reliable forex broker, create a trading account, and learn the basics of technical and fundamental analysis. It's essential to start with a demo account to practice before trading with real money.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: What are major currency pairs?</div>
+        <div class="answer">A: Major currency pairs are the most traded currency pairs in the forex market and include pairs like EUR/USD, USD/JPY, and GBP/USD.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: How much money do I need to start trading forex?</div>
+        <div class="answer">A: The amount of money needed to start trading forex varies, and it depends on the broker's minimum deposit requirements. It's advisable to start with an amount you can afford to lose and gradually increase your investment as you gain experience.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: What is leverage in forex trading?</div>
+        <div class="answer">A: Leverage allows traders to control a larger position with a smaller amount of capital. While it can amplify profits, it also increases the risk of significant losses. It's crucial to use leverage wisely and understand its implications.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: How can I manage risk in forex trading?</div>
+        <div class="answer">A: Risk management in forex trading involves setting stop-loss orders, diversifying your trades, and only risking a small percentage of your capital on each trade. It's essential to have a solid risk management strategy to protect your account from substantial losses.</div>
+    </div>
+
+    <!-- Add more FAQ items as needed -->
+
+</div>
+{% endblock %}

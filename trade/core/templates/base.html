@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Forex market</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons 
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}">
+  -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/jqvmap/jqvmap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'assets/dist/css/adminlte.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/summernote/summernote-bs4.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<!---------------------------aworesome icon----------------------->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+
+ 
+  <style>
+    .main-sidebar {
+      background-color: #f8f9fa !important; /* Light color */
+      color: #343a40 !important; /* Dark text color */
+    }
+
+    .sidebar-dark-primary {
+      background: #f8f9fa !important; /* Light color */
+    }
+
+    .nav-sidebar .nav-treeview {
+      background: #f8f9fa !important; /* Light color */
+    }
+    
+    .nav-sidebar .nav-item.has-treeview.menu-open > .nav-link {
+      background-color: #f8f9fa !important; /* Change this to your desired light color */
+    }
+
+    .nav-sidebar .nav-item.has-treeview > .nav-link:hover {
+      background-color: #e2e6ea !important; /* Change this to your desired hover color */
+    }
+
+    .nav-sidebar .nav-link {
+      color: #343a40 !important; /* Dark text color */
+    }
+
+    .nav-sidebar .nav-item.has-treeview:hover,
+    .nav-sidebar .nav-item.has-treeview:hover > .nav-link {
+      background-color: #9db1c5 !important; /* Change this to your desired hover color */
+    }
+
+    .nav-sidebar .nav-item.has-treeview:hover,
+    .nav-sidebar .nav-item.has-treeview:hover > .nav-link,
+    .nav-sidebar .nav-item.has-treeview.show > .nav-link,
+    .nav-sidebar .nav-item.has-treeview.show:hover > .nav-link,
+    .nav-sidebar .nav-item .nav-treeview a.nav-link:hover {
+      background-color: #e2e6ea !important; /* Change this to your desired hover color */
+    }
+
+
+
+
+  </style>
+  
+
+</head>
+<!-------------------
+  
+  <body class="hold-transition sidebar-mini layout-fixed">
+  ------------------>
+<body>
+
+<div class="hold-transition layout-fixed">
+
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-light navbar-light fixed-top">
+    
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <!--------------------
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/" class="nav-link">Home</a>
+      </li>
+      -------------------->
+
+       
+    </ul>
+
+    <li class="nav-item d-none d-sm-inline-block font-weight-bold mx-2 ">
+     <img src="{% static 'assets/dist/img/fx-logo.png' %}" alt="logo" style="width: 50px; height: 50px;">
+   </li>
+
+
+    <li class="nav-item d-none d-sm-inline-block font-weight-bold mx-2 ">
+       Forex insights
+    </li>
+
+    <!------------------------
+    <-- SEARCH FORM --
+    <form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    ---------------------->
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+       
+      
+      <!-- SEARCH FORM -->
+      <!------------------
+    <form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+---------------------->
+
+      <li class="nav-item dropdown">
+        
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          Login
+        </a>
+         
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}" class="dropdown-item"> Sign out </a>
+      {% else %}
+          <a href="{% url 'signup' %}" class="dropdown-item"> Sign up </a>
+          <a href="{% url 'login' %}" class="dropdown-item"> Sign in </a>
+      {% endif %}
+         
+      <!------------------
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            Contact us
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            Signup
+          </a>
+          
+        </div>
+      </li>
+      -------------->
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          
+          More
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <!--------------
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            Message
+            
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            
+            Inbox</span>
+          </a>
+          -------------->
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            
+            Notifications</span>
+          </a>
+          
+           
+      </li>
+
+    </ul>
+    
+  </nav>
+  <!-- /.navbar -->
+
+  
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-gradient-secondary">
+    <!-- Brand Logo -->
+    <!--------------------
+   <a href="/" class="brand-link">         
+      <img src="{% static 'assets/dist/img/fx-logo.jpg' %}" alt="Fx Logo" class="brand-image img-circle elevation-3 50%"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light text-dark">Forex</span>
+    </a>
+
+  ---------------------->
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <!---------------
+          <img src="{% static 'assets/dist/img/fx_logo.jpg' %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Forex</a>
+        </div>
+        ------------>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2  text-bold">
+        <ul class="nav nav-pills nav-sidebar flex-column fixed-top " data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-header text-dark">My dashboard</li>
+          <li class="nav-item has-treeview menu-open ">
+            <a href="#" class="nav-link active">
+              <p>
+                Essantial
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'about' %}" class="nav-link active">
+                  <p>About</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'services' %}" class="nav-link">
+                  <p>Services</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'pricing' %}" class="nav-link">
+                  <p>Pricing</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'chart' %}" class="nav-link">
+              <p>
+                Chart
+                 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <p>
+                What to learn
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'fundamental' %}" class="nav-link">
+                  <p>Fundamental</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'technical' %}" class="nav-link">
+                  <p>Technical</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'risk' %}" class="nav-link">
+                  <p>Risk management</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'pschology' %}" class="nav-link">
+                  <p>Market pschology</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'pair' %}" class="nav-link">
+                  <p>Trading pairs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'analysis' %}" class="nav-link">
+                  <p>Market analysis</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'trick' %}" class="nav-link">
+                  <p>Tips and tricks</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+             
+          <li class="nav-header text-body" >Market</li>
+          <li class="nav-item">
+            <a href="{% url 'levarage' %}" class="nav-link">
+              <p>
+               levarage
+                 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'market_news' %}" class="nav-link">
+              <p>
+                News
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'bank' %}" class="nav-link">
+              <p>
+                Trends
+              </p>
+            </a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+             
+              <p>Documentation</p>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+     
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v1</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    
+{% block content %}
+
+
+
+
+
+  
+{% endblock  %}
+
+
+<style>
+  footer {
+    background-color: #44484d;
+    color: #f7f9fc;
+    padding: 30px 0px;
+    width: 100%;
+    
+  }
+
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .footer-section {
+    flex: 1 1 calc(33.33% - 20px);
+    text-align: center;
+    margin: 0;
+  }
+
+  .footer-section h4 {
+    color: #3498db;
+    margin-bottom: 10px;
+  }
+
+  .footer-section a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .footer-section a:hover {
+    color: #3498db;
+  }
+
+  .social-media-icons {
+    flex: 1 1 calc(33.33% - 20px);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .social-media-icons a {
+    color: #ecf0f1;
+    margin-right: 10px;
+    font-size: 1.5em;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .social-media-icons a:last-child {
+    margin-right: 0;
+  }
+
+  .newsletter {
+    flex: 1 1 calc(33.33% - 20px);
+    text-align: center;
+  }
+
+  .newsletter form {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .newsletter input {
+    padding: 8px;
+    font-size: 1em;
+    border: none;
+  }
+
+  .newsletter button {
+    background-color: #3498db;
+    color: #ecf0f1;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  .newsletter button:hover {
+    background-color: #2980b9;
+  }
+
+  @media screen and (max-width: 800px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-section, .newsletter, .social-media-icons {
+      flex: 1 1 100%;
+      margin:  0;
+    }
+
+    .social-media-icons {
+      justify-content: space-around;
+    }
+  }
+</style>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h5 class="text-primary">Useful Links</h5>
+      <a href="/">Home</a>
+      <a href="{% url 'about' %}">About Us</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+
+    <div class="footer-section">
+      <h5 class="text-primary">Quick Links</h5>
+      <a href="{% url 'question' %}">FAQ</a>
+      <a href="{% url 'terms' %}">Terms of Service</a>
+      <a href="{% url 'policy' %}">Privacy Policy</a>
+    </div>
+
+
+    <div class="newsletter mb-2">
+
+    </div>
+   
+    <!--------------------------------- Newsletter ------------
+    
+      <div class="newsletter mb-2">
+        <h5>Subscribe for Our Newsletter</h5>
+        <form action="{}" method="post">
+          {% csrf_token %}
+          <input type="email" name="email" placeholder="Enter your email">
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="social-media-icons m-3"> 
+
+        <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    -------------------->
+  </div>
+  
+    <p class="text-center">&copy; <script>document.write(new Date().getFullYear());</script>  Big Forex Market . All rights reserved.</p>
+</footer>
+
+
+</div>
+
+<!-- jQuery -->
+<script src="{% static 'assets/plugins/jquery/jquery.min.js' %}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{% static 'assets/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- ChartJS -->
+<script src="{% static 'assets/plugins/chart.js/Chart.min.js' %}"></script>
+<!-- Sparkline -->
+<script src="{% static 'assets/plugins/sparklines/sparkline.js' %}"></script>
+<!-- JQVMap -->
+<script src="{% static 'assets/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{% static 'assets/plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+<!-- daterangepicker -->
+<script src="{% static 'assets/plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'assets/plugins/daterangepicker/daterangepicker.js' %}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{% static 'assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<!-- Summernote -->
+<script src="{% static 'assets/plugins/summernote/summernote-bs4.min.js' %}"></script>
+<!-- overlayScrollbars -->
+<script src="{% static 'assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'assets/dist/js/adminlte.js' %}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{% static 'assets/dist/js/pages/dashboard.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'assets/dist/js/demo.js' %}"></script>
+</body>
+</html>

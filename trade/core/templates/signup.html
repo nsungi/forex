@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<center>
+  <main class="container my-4">
+    <h3 class="my-4 border-bottom pb-1">Sign Up</h3>
+    <body class="bg-gray-100">
+      <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
+        
+        <div>
+          {% for messages in messages %}
+          <h5>{{ messages }}</h5>
+          {% endfor %}
+        </div>
+        <form action="{% url 'signup' %}" method="post">
+          {% csrf_token %}
+          
+          <!-- Your custom form fields -->
+          <div class="form-group m-2">
+            <label for="username">Username:</label>
+            <input type="text" name="username" placeholder="Username" class="bg-gray-200 mx-2 mb-2 my-3 py-2 px-4 shadow-none rounded dark:bg-gray-800">
+          </div>
+
+          <div class="form-group m-2">
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="Email" class="bg-gray-200 mb-2 mx-2 my-2 py-2 px-3 rounded">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password1" placeholder="Password" class="bg-gray-200 mb-2 my-2 py-2 mx-2 shadow-none rounded dark:bg-gray-800">
+          </div>
+
+          <div class="form-group">
+            <label for="password2">Confirm Password:</label>
+            <input type="password" name="password2" placeholder="Confirm Password" class="bg-gray-200 mb-2 rounded my-2 py-2 mx-2 dark:bg-gray-800">
+          </div>
+          
+          <button type="submit" class="btn btn-info bg-gradient-to-br from-pink-500   rounded-md text-white ">Sign Up</button>
+        </form>
+        
+        <div class="text-center mt-5 space-x-2">
+          <p class="text-base">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+      </div>
+    </body>
+  </main>
+</center>
+{% endblock %}

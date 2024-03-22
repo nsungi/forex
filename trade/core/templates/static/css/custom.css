@@ -1,0 +1,120 @@
+
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: white;
+    }
+
+    footer {
+        background-color: #b6afaf;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+        
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        text-align: left;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+    }
+
+    .footer-logo {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        text-decoration: none;
+        color: #fff;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: #ffcc00;
+    }
+
+    .social-icons {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .social-icons a {
+        text-decoration: none;
+        margin-right: 15px;
+        color: #234768;
+        font-size: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        color: #7700ff;
+    }
+
+    /* Newsletter Form */
+    .newsletter-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .newsletter-input {
+        padding: 10px;
+        width: 200px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    .newsletter-submit {
+        background-color: #9b8e8e;
+        color: #332d2d;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .newsletter-submit:hover {
+        background-color: #e58900;
+    }
+
+    /* Animation */
+    .animated-text {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .animated-text span {
+        display: inline-block;
+        transform: translateY(100%);
+        animation: slide-up 1s ease-out forwards;
+    }
+
+    @keyframes slide-up {
+        to {
+            transform: translateY(0%);
+        }
+    }
+

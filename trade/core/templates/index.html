@@ -1,0 +1,536 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  Forex Trade Market Dashboard
+{% endblock  %}
+
+{% block content %}
+ 
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .hero-section {
+            text-align: center;
+            padding: 50px;
+            background-color: #009688;
+            color: #fff;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .intro-section {
+            text-align: left;
+            padding: 30px;
+        }
+
+        .featured-content {
+            text-align: center;
+            padding: 30px;
+        }
+
+       
+
+        .interactive-tools {
+            text-align: left;
+            padding: 30px;
+        }
+
+        .strategies-section,
+        .trader-interviews,
+        .market-news,
+        .risk-management,
+        .testimonials{
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+
+        .interactive-tools {
+          background-color: #fff;
+          padding: 30px;
+          margin-top: 20px;
+      }
+  
+      .interactive-tools h3 {
+          font-size: 28px;
+          color: #333;
+          margin-bottom: 20px;
+      }
+  
+      .interactive-tools p {
+          font-size: 16px;
+          color: #666;
+          margin-bottom: 15px;
+      }
+  
+      .interactive-tools ul {
+          list-style-type: disc;
+          padding-left: 20px;
+          margin-bottom: 15px;
+      }
+  
+      .interactive-tools li {
+          font-size: 16px;
+          color: #666;
+      }
+  
+      .cta-button {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 18px;
+          color: #fff;
+          background-color: #009688;
+          text-decoration: none;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+      }
+  
+      .cta-button:hover {
+          background-color: #00796b;
+      }
+
+
+  
+      @media screen and (max-width: 768px) {
+          .interactive-tools {
+              padding: 20px;
+          }
+  
+          .interactive-tools h3 {
+              font-size: 24px;
+              margin-bottom: 15px;
+          }
+  
+          .interactive-tools p {
+              font-size: 14px;
+               margin-bottom: 10px;
+              
+          }
+  
+          .interactive-tools ul {
+              margin-bottom: 10px;
+          }
+  
+          .interactive-tools li {
+              font-size: 14px;
+          }
+  
+          .cta-button {
+              font-size: 16px;
+          }
+
+
+          .interactive-tools {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Responsive adjustments for small screens */
+        @media screen and (max-width: 768px) {
+            .interactive-tools {
+                flex-direction: column;
+            }
+        }
+
+  
+          /* Add more responsive styles as needed */
+      }
+  
+      @media screen and (max-width: 480px) {
+          .interactive-tools {
+              padding: 15px;
+          }
+  
+          .interactive-tools h3 {
+              font-size: 20px;
+              margin-bottom: 10px;
+          }
+  
+          .interactive-tools p {
+              font-size: 12px;
+              margin-bottom: 5px;
+          }
+  
+          .interactive-tools ul {
+              margin-bottom: 5px;
+          }
+  
+          .interactive-tools li {
+              font-size: 12px;
+          }
+  
+        
+          /* Add more responsive styles as needed */
+      }
+
+        .strategies-section {
+          background-color: #fff;
+          padding: 30px;
+          margin-top: 20px;
+      }
+  
+      .strategy-item {
+          margin-bottom: 30px;
+          text-align: left;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: box-shadow 0.3s ease;
+      }
+  
+      .strategy-item:hover {
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+  
+      .strategy-item img {
+          width: 100%;
+          height: auto;
+          border-bottom: 1px solid #ddd;
+      }
+  
+      .strategy-item h4 {
+          font-size: 24px;
+          margin: 20px 0;
+          color: #333;
+      }
+  
+      .strategy-item p,
+      .strategy-item ul {
+          margin: 15px;
+          color: #666;
+      }
+  
+      .strategy-item ul {
+          list-style-type: disc;
+          padding-left: 20px;
+      }
+  
+      .cta-button:hover {
+          background-color: #00796b;
+      }
+  
+      @media screen and (max-width: 768px) {
+          .strategy-item {
+              margin-bottom: 20px;
+          }
+  
+          .strategy-item h4 {
+              font-size: 20px;
+          }
+  
+          .cta-button {
+              font-size: 16px;
+          }
+  
+          /* Add more responsive styles as needed */
+      }
+  
+      @media screen and (max-width: 480px) {
+          .strategy-item {
+              margin-bottom: 15px;
+          }
+  
+          .strategy-item h4 {
+              font-size: 18px;
+          }
+  
+          .cta-button {
+              font-size: 14px;
+          }
+  
+          /* Add more responsive styles as needed */
+      }
+
+    /* Two-column layout for large screens */
+    .interactive-tools {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  /* Responsive adjustments for small screens */
+  @media screen and (max-width: 768px) {
+      .interactive-tools {
+          flex-direction: column;
+      }
+  }
+
+
+        .subscription-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .hero-section {
+                padding: 30px;
+            }
+
+            .cta-button {
+                font-size: 16px;
+            }
+
+            /* Add more responsive styles as needed */
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-section {
+                padding: 20px;
+            }
+
+            .cta-button {
+                font-size: 14px;
+            }
+
+            /* Add more responsive styles as needed */
+        }
+    </style>
+ 
+<body>
+  
+
+   
+    <div class="hero-section">
+        <h2>Your Gateway to Successful Forex Trading</h2>
+        <p>Empower your financial journey with expert insights, actionable strategies, and real-time market analysis.</p>
+        <a href="{% url 'login' %}" class="cta-button bg-gradient-olive rounded   p-3">Start Your Journey</a>
+    </div>
+
+    <div class="intro-section">
+      <p>Welcome back to Forex insights, your ultimate destination for unlocking the secrets of successful forex trading. Whether you're taking your first steps in the currency markets or you're a seasoned trader looking to refine your strategies, we're here to guide you every step of the way.</p>
+      <p>What sets us apart:</p>
+      <ul type="none">
+          <li>Comprehensive Guides: Dive into our extensive library of guides covering everything from the basics of forex trading to advanced strategies.</li>
+          <li>Expert Insights: Stay ahead of market trends with insights from seasoned traders and industry experts.</li>
+          <li>Interactive Tools: Explore real-time forex rates and dynamic market charts to make informed decisions.</li>
+      </ul>
+  </div>
+
+  <h4 class="text-center bg-gradient-olive rounded   p-4 ">Join our thriving community of traders and elevate your trading journey with Forex Insights</h4>
+
+
+
+  <section class="p-3 p-md-5">
+    <div class="container">
+        <div class="row text-center">
+            <!-- Box 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-light text-light">
+                    <div class="card-body">
+                        <div class="h1 mb-3">
+                            <em class="bi bi-laptop"></em>
+                        </div>
+                        <h3 class="card-title mb-3">
+                            Trending Topics
+                        </h3>
+                        <p class="card-text">
+                            Explore the most recent and insightful articles curated by our expert team. 
+                            Stay informed about the latest trends, market analysis, and trading strategies:
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-light text-light">
+                    <div class="card-body">
+                        <div class="h1 mb-3">
+                            <em class="bi bi-person-square"></em>
+                        </div>
+                        <h2 class="card-title mb-3">
+                            Decoding Cryptocurrency Impact on Forex
+                        </h2>
+                        <p class="card-text">
+                          Understand how the rise of cryptocurrencies is influencing 
+                          the forex market and shaping trading strategies.
+                          <!-------
+                            <a href="#">Explore more</a>
+                            --------> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card bg-light text-light">
+                    <div class="card-body">
+                        <div class="h1 mb-3">
+                            <em class="bi bi-people"></em>
+                        </div>
+                        <h3 class="card-title mb-3">
+                            The Role of Central Banks in Forex Movements
+                        </h3>
+                        <p class="card-text">
+                             Learn about the impact of central bank decisions on currency values 
+                             and how to navigate these changes successfully. 
+                                <a href="{% url 'bank' %}" >Discover more</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    </div>
+</section>
+
+
+ <!-----------------------------------------------strategies-section-------------------------------------->
+<section class="container my-2">
+  <div class="strategies-section">
+    <h3>Profitable Strategies</h3>
+
+    <div class="strategy-item">
+      <!--------
+      <img src="{% static 'assets/dist/img/fx1.jpg' %}" alt="Forex Strategy" style="max-width: 100%; height: auto;">
+      ----->  
+      <h4>Strategy 1: Trend Following</h4>
+        <p>Master the art of trend following to ride the momentum in the forex market. 
+            This strategy involves identifying established trends and making trades in the direction of those trends.
+             Key components of trend following include:</p>
+        <ul type="none">
+            <li>Identifying trend direction using moving averages</li>
+            <li>Using support and resistance levels for entry and exit points</li>
+            <li>Implementing risk management to protect profits</li>
+        </ul>
+        <p>Explore real-world examples and case studies to understand how trend 
+            following can lead to consistent profits in various market conditions.</p>
+        
+    </div>
+
+    <div class="strategy-item">
+      <!-----------
+      <img src="{% static 'assets/dist/img/fx1.jpg' %}" alt="Forex Strategy" style="max-width: 100%; height: auto;">
+       
+      --------->
+      <h4>Strategy 2: Fibonacci Retracement</h4>
+        <p>Unlock the power of Fibonacci retracement as a tool for predicting potential reversal points in the forex market. This strategy involves:</p>
+        <ul>
+            <li>Identifying key Fibonacci levels to determine support and resistance</li>
+            <li>Combining Fibonacci retracement with other technical indicators</li>
+            <li>Executing trades based on confirmed reversal signals</li>
+        </ul>
+        <p>Delve into practical examples and step-by-step guides to apply Fibonacci retracement in your trading strategy effectively.</p>
+        
+    </div>
+
+    <!-- Add more strategy items as needed -->
+</div>
+ 
+    <div class="row mt-4 g-4">
+        <div class="col-lg-6">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="h3">Master the Basics</div>
+                </div>
+                <div class="card-body">
+                    <p class="lead">
+                        Build a solid foundation by mastering the essential concepts of forex trading. Our beginner-friendly content covers:
+                    </p>
+                    Understanding currency pairs and exchange rates
+                    Introduction to market orders and limit orders
+                    Risk management strategies for beginners 
+                
+                   Equip yourself with the knowledge needed to navigate the forex market confidently.
+                </div>
+                 
+            </div>
+        </div>
+              <div class="col-lg-6">
+
+
+
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="h3">In-Depth Market Analysis</div>
+                </div>
+                <div class="card-body">
+                    <p class="lead">
+                        Dive into the complexities of market analysis to make informed trading decisions. Explore in-depth content on:
+                    </p>
+                    Technical analysis: Chart patterns, indicators, and trend analysis 
+                    Fundamental analysis: Economic indicators, news events, and their impact 
+                    Sentiment analysis: Understanding market sentiment and its role in trading 
+                     Gain a comprehensive understanding of market dynamics and refine your analytical skills. 
+                    <a href="{% url 'analysis' %}"  >
+                <em class="bi bi-chevron-right"></em> Read more
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="h3">Dynamic Market Charts</div>
+                </div>
+                <div class="card-body">
+                    <p class="lead">
+                        Visualize market trends and patterns with our dynamic charts. Our interactive charting tool offers a range of features for in-depth analysis. Highlights include:
+                    </p>
+                    Candlestick, line, and bar chart options 
+                    Customizable timeframes for historical data 
+                   Technical indicators for advanced analysis                
+                   Enhance your trading strategy by gaining insights from dynamic and responsive market charts. 
+                    <a href="{% url 'chart' %}" class="">Explore Charts</a>
+                </div>
+                 
+            </div>
+        </div>
+              
+        <div class="col-lg-6">
+                <div class="card">
+                <div class="card-header">
+                    <div class="h3">Real-Time Forex Rates</div>
+                </div>
+                <div class="card-body">
+                    <p class="lead">
+                        Stay updated with the latest exchange rates for major currency pairs. Our real-time forex rates tool provides accurate and up-to-the-minute currency values. Key features include:
+                   </p>
+                   Live streaming of currency prices 
+                   Customizable currency pair selection 
+                   Historical data and performance charts 
+        
+                   Access real-time market information to make informed trading decisions.
+                   <!----------------
+                   <a href="#" >Explore Rates</a>
+                   --------------->
+                </div> 
+            </div>
+        </div>
+    </section>
+
+
+  </body>
+
+
+{% endblock %}

@@ -1,0 +1,92 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid my-5">
+
+			<center>
+<main class="container my-5">
+	<!-- Featured Products -->
+	<h5 class="my-4 border-bottom pb-1">Login</h5>
+	 
+    <!-- header-->
+	<div>
+				
+	</div>    
+
+
+        <!-- Content-->
+        <div>
+            <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
+                <p class="lg:text-3xl text-xl  mb-5">please enter your crecidential</p>
+
+
+
+                <div>
+                    <style>
+                        h6{
+                            color: red;
+                        }
+                    </style>
+                    {% for messages in messages %}
+                    <h6>{{messages}}</h6> 
+                    {% endfor %}
+                </div>
+
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+
+					<!-- 
+					<div class="form-group">
+						<label for="email">Email address:</label>
+						<input type="email" class="form-control" id="email">
+					  </div>
+
+					  -->
+
+					  <div class="form-group">
+						<label for="text">Username:</label>
+						<input type="text" name="username" placeholder="Username" class="bg-gray-200 mb-2 py-2 mx-2 shadow-none rounded dark:bg-gray-800">
+					</div>
+					  
+
+					  <div class="form-group">
+						<label for="password">Password:</label>
+                    <input type="password" name="password" placeholder="Password" class="bg-gray-200 mb-2 py-2 mx-2 shadow-none rounded dark:bg-gray-800">
+                    </div>
+
+                        <div class="checkbox">
+                            <input type="checkbox" id="chekcbox1" checked>
+                            <label for="chekcbox1"><span class="checkbox-icon"></span>Remember Me</label>
+                        </div>
+
+				 
+                        <a href="#"> Forgot Your Password? </a>
+                    <button type="submit" class="btn btn-info from-pink-500 py-2 rounded-md text-white  ">Login</button>
+                    <div class="text-center mt-5 space-x-2">
+                        <p class="text-base"> Not registered? <a href="/signup" class=""> Create a account </a></p>
+                    
+				 
+
+					</div>
+                </form>
+            
+            </div>
+       
+
+        </div>
+ 
+        <!-- Footer -->
+ <!------------
+	<p><a href=" " class="text-danger">Reset Password?</a></p>
+	<p>If you are not registred, Please <a href="{% url 'signup' %}">Signup here</a>.</p>
+ --------------->
+
+</main>
+</div>
+
+</center>
+
+{% endblock %}

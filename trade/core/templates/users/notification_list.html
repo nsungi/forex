@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+
+
+<style>
+
+/* Styles for larger screens */
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-item {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.notification-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Styles for smaller screens (up to 600px width) */
+@media screen and (max-width: 600px) {
+  .notification-item {
+    padding: 10px;
+  }
+
+  .notification-item h5 {
+    font-size: 16px;
+  }
+
+  .notification-item p {
+    font-size: 14px;
+  }
+}
+</style>
+
+{% block content %}
+  <h4>Notification List</h4>
+  {% if notifications %}
+    <ul class="notification-list">
+      {% for notification in notifications %}
+        <li class="notification-item">
+          <h5>{{ notification.title }}</h5>
+          <p>{{ notification.description }}</p>
+          {% if notification.image %}
+            <img src="{{ notification.image.url }}" alt="{{ notification.title }}">
+          {% endif %}
+          <p>Timestamp: {{ notification.timestamp }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No notifications available.</p>
+  {% endif %}
+{% endblock %}
