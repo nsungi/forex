@@ -1,4 +1,0 @@
-django-admin-lite3
-django
-six
-pillow
