@@ -2,11 +2,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-#from crispy_forms.helper import FormHelper
-#from crispy_forms.layout import Layout, Submit, ButtonHolder, Button
 from .models import (ImageUpload, TextUpload, Course, Technical,
-                     Fundamental, Risk, Analysis, Trick, Pschology, Pair,
-                     Subscriber, Notification, Message) 
+                     Fundamental, Risk, Analysis, Trick, Pschology, Pair
+                ) 
 
 
 class SignUpForm(UserCreationForm):
@@ -41,18 +39,8 @@ class LoginForm(forms.Form):
     username = forms.CharField(max_length=150)
     password = forms.CharField(widget=forms.PasswordInput)
 
-#notification
-class NotificationForm(forms.ModelForm):
-    class Meta:
-        model = Notification
-        fields = ['title', 'description', 'image']
 
 
-#conversations
-class MessageForm(forms.ModelForm):
-    class Meta:
-        model = Message
-        fields = ['recipient', 'content']
         
 
 class ImageUploadForm(forms.ModelForm):
@@ -80,24 +68,7 @@ class FundamentalForm(forms.ModelForm):
     class Meta:
         model = Fundamental
         fields = ['user', 'title','texts', 'image']
-"""
-    def __init__(self, *args, **kwargs):
-        super(FundamentalForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(
-            # Customize the form fields as needed
-            'title',
-            # Add other fields as necessary
 
-            # Submit button
-            ButtonHolder(
-                Submit('submit', 'Submit', css_class='btn-primary'),
-                Button('edit', 'Edit', css_class='btn-secondary', onclick="location.href='{% url 'fundamental_edit' pk=form.instance.pk %}';"),
-                Button('delete', 'Delete', css_class='btn-danger', onclick="location.href='{% url 'fundamental_delete' pk=form.instance.pk %}';")
-            )
-        )
-        
-"""
         
         
 # Risk form        
@@ -126,9 +97,3 @@ class PairForm(forms.ModelForm):
         model = Pair
         fields = ['user', 'title','texts', 'image']
 
- 
-#subscriber
-class SubscribeForm(forms.ModelForm):
-    class Meta:
-        model = Subscriber
-        fields = ['email']

@@ -4,30 +4,26 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
-#from django.contrib.auth.mixins import PermissionRequiredMixin
-#from django.contrib.auth.forms import AuthenticationForm
-#from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView
 from django.views import View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 from .models import ( ImageUpload, TextUpload, Course, 
-                     Technical, Fundamental, Risk, Analysis, Trick, Pschology, Pair, 
-                     Subscriber, Notification, Message)
+                     Technical, Fundamental, Risk, Analysis, Trick, Pschology, Pair
+                     )
 
 from .forms import (SignUpForm, LoginForm, ImageUploadForm, TextUploadForm, CourseForm, 
                     TechnicalForm, FundamentalForm, RiskForm, AnalysisForm, 
-                    TrickForm, PschologyForm, PairForm, SubscribeForm, NotificationForm,
-                    MessageForm,)
+                    TrickForm, PschologyForm, PairForm)
 
 
 
 
 #home page
 class HomeView(View):
-    template_name = 'home.html'
+    template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
@@ -162,138 +158,12 @@ class LogoutView(FormView):
         return redirect('login')  # Update with the URL you want to redirect to after logout
 
 
-#notification
-class NotificationView(View):
-    model = Notification
-    template_name = 'users/notification_list.html'
-    context_object_name = 'notifications'
-
-
-class SendNotificationView(CreateView):
-    model = Notification
-    form_class = NotificationForm
-    template_name = 'users/notify.html'
-    success_url = reverse_lazy('users/notification_list')
-
-
-#conversations
-@method_decorator(login_required, name='dispatch')
-class SendMessageView(CreateView):
-    model = Message
-    form_class = MessageForm
-    template_name = 'users/send_message.html'
-    success_url = reverse_lazy('users/message_list')
-
-    def form_valid(self, form):
-        form.instance.sender = self.request.user
-        recipient_id = self.kwargs['recipient_id']
-        form.instance.recipient = User.objects.get(pk=recipient_id)
-        return super().form_valid(form)
-
-@method_decorator(login_required, name='dispatch')
-class MessageView(View):
-    model = Message
-    template_name = 'users/message_list.html'
-    context_object_name = 'messages'
-
-    def get_queryset(self):
-        return Message.objects.filter(sender=self.request.user).order_by('-timestamp')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['inbox'] = Message.objects.filter(recipient=self.request.user).order_by('-timestamp')
-        return context
-
-
-
-
-
-
-
-
-
-
-
-#subscribes
-from django.db import IntegrityError
-
-
-class SubscribeView(View):
-    template_name = 'my_form_template.html'
-
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
-
-    def post(self, request, *args, **kwargs):
-        email = request.POST.get('email')
-        result = self.create_subscriber(email)
-        if isinstance(result, Subscriber):
-            return render(request, 'success_template.html')
-        else:
-            return render(request, 'error_template.html', {'error_message': result})
-
-    def create_subscriber(self, email):
-        try:
-            subscriber, created = Subscriber.objects.get_or_create(email=email)
-            if created:
-                self.send_welcome_email(email)
-            return subscriber
-        except IntegrityError as e:
-            return f'Duplicate email: {email}'
-        except Exception as e:
-            return f'Error creating subscriber: {e}'
-
-    def send_welcome_email(self, email):
-        subject = 'Welcome to Our Newsletter'
-        message = 'Thank you for subscribing to our newsletter!'
-        from_email = 'your@example.com'
-        recipient_list = [email]
-        send_mail(subject, message, from_email, recipient_list)
-
-
-        
-
-#permission level
-"""
-#Permission level
-class CustomerView(PermissionRequiredMixin, View):
-    permission_required = 'core.customer_permission'
-    template_name = 'customer_content.html'
-
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
-
-class AdminView(PermissionRequiredMixin, View):
-    permission_required = 'core.admin_permission'
-    template_name = 'admin_content.html'
-
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
-
-"""
-
 # uploading images 
 @method_decorator(login_required, name='dispatch')
 class ImageUploadCreateView(CreateView):
     model = ImageUpload
     form_class = ImageUploadForm
     template_name = 'image_upload_form.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
-
-
-# class  for updating ImageUpload
-@method_decorator(login_required, name='dispatch')
-class ImageUploadUpdateView(UpdateView):
-    model = ImageUpload
-    fields = ['image', 'description']
-    template_name = 'update_form.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
-
-# class for deleting ImageUpload
-@method_decorator(login_required, name='dispatch')
-class ImageUploadDeleteView(DeleteView):
-    model = ImageUpload
-    template_name = 'delete_confirm.html'
     success_url = reverse_lazy('success')  # Redirect to a success page
 
 
@@ -332,25 +202,6 @@ class FundamentalCreateView(CreateView):
     
      
 
-# updating Fundamental class 
-@method_decorator(login_required, name='dispatch')
-class FundamentalUpdateView(UpdateView):
-    model = Fundamental
-    fields = ['title']
-    template_name = 'update_form.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
-
-# deleting Fundamental class
-@method_decorator(login_required, name='dispatch')
-class FundamentalDeleteView(DeleteView):
-    model = Fundamental
-    template_name = 'delete_confirm.html'
-    success_url = reverse_lazy('success')  
-
-
-
-
-
 #Pschology page & success page
 class PschologyView(View):
     template_name = 'pschology.html'
@@ -366,22 +217,6 @@ class PschologyCreateView(CreateView):
     form_class = PschologyForm
     template_name = 'pschology_form.html'
     success_url = reverse_lazy('success')  # Redirect to a success page
-
-# class  for updating Pschology
-@method_decorator(login_required, name='dispatch')
-class PschologyUpdateView(UpdateView):
-    model = Pschology
-    fields = ['title']
-    template_name = 'update_form.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
-
-# class  for deleting Pschology
-@method_decorator(login_required, name='dispatch')
-class PschologyDeleteView(DeleteView):
-    model = Pschology
-    template_name = 'delete_confirm.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
-
 
 
 
@@ -401,20 +236,6 @@ class PairCreateView(CreateView):
     template_name = 'pair_form.html'
     success_url = reverse_lazy('success')  # Redirect to a success page
 
-# class  for updating Pair
-@method_decorator(login_required, name='dispatch')
-class PairUpdateView(UpdateView):
-    model = Pair
-    fields = ['title']
-    template_name = 'update_form.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
-
-# class  for deleting Pair
-@method_decorator(login_required, name='dispatch')
-class PairDeleteView(DeleteView):
-    model = Pair
-    template_name = 'delete_confirm.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
 
 
 
@@ -435,29 +256,6 @@ class TechnicalCreateView(CreateView):
     success_url = reverse_lazy('technical')  # Redirect to a success page
 
 
-# updating technical class 
-@method_decorator(login_required, name='dispatch')
-class TechnicalUpdateView(UpdateView):
-    model = Technical
-    fields = ['title']
-    template_name = 'update_form.html'
-    success_url = reverse_lazy('technical')  # Redirect to a success page
-
-# deleting technical class
-@method_decorator(login_required, name='dispatch')
-class TechnicalDeleteView(DeleteView):
-    model = Technical
-    template_name = 'delete_confirm.html'
-    success_url = reverse_lazy('technical')  
-
-
-
-
-
-
-
-
-
 #Risk page & success page
 class RiskView(View):
     template_name = 'risk.html'
@@ -474,24 +272,7 @@ class RiskCreateView(CreateView):
     template_name = 'risk_form.html'
     success_url = reverse_lazy('success')  # Redirect to a success page
 
-
-# updating Risk class 
-@method_decorator(login_required, name='dispatch')
-class RiskUpdateView(UpdateView):
-    model = Risk
-    fields = ['title']
-    template_name = 'update_form.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
-
-# deleting Risk class
-@method_decorator(login_required, name='dispatch')
-class RiskDeleteView(DeleteView):
-    model = Risk
-    template_name = 'delete_confirm.html'
-    success_url = reverse_lazy('success')  
-
-
-
+ 
 #Trickpage & success page
 class TrickView(View):
     template_name = 'trick.html'
@@ -509,23 +290,6 @@ class TrickCreateView(CreateView):
     success_url = reverse_lazy('success')  # Redirect to a success page
 
 
-# updating Trick class 
-@method_decorator(login_required, name='dispatch')
-class TrickUpdateView(UpdateView):
-    model = Trick
-    fields = ['title']
-    template_name = 'update_form.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
-
-# deleting Trick class
-@method_decorator(login_required, name='dispatch')
-class TrickDeleteView(DeleteView):
-    model = Trick
-    template_name = 'delete_confirm.html'
-    success_url = reverse_lazy('success')  
-
-
-
 #Analysis & success page
 class AnalysisView(View):
     template_name = 'analysis.html'
@@ -541,51 +305,3 @@ class AnalysisCreateView(CreateView):
     form_class = AnalysisForm
     template_name = 'analysis_form.html'
     success_url = reverse_lazy('success')  # Redirect to a success page
-
-
-# updating Analysis class 
-@method_decorator(login_required, name='dispatch')
-class AnalysisUpdateView(UpdateView):
-    model = Analysis
-    fields = ['title']
-    template_name = 'update_form.html'
-    success_url = reverse_lazy('success')  # Redirect to a success page
-
-# deleting Analysis class
-@method_decorator(login_required, name='dispatch')
-class AnalysisDeleteView(DeleteView):
-    model = Analysis
-    template_name = 'delete_confirm.html'
-    success_url = reverse_lazy('success')  
-
-
-
-
-
-class SubscribeView(View):
-    template_name = 'subscribe.html'
-
-    def get(self, request, *args, **kwargs):
-        form = SubscribeForm()
-        return render(request, self.template_name, {'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = SubscribeForm(request.POST)
-        if form.is_valid():
-            subscriber = form.save()
-
-            # Send a confirmation email
-            subject = 'Subscription Confirmation'
-            message = 'Thank you for subscribing!'
-            from_email = 'your@example.com'  # Update with your email
-            to_email = [subscriber.email]
-
-            email = EmailMessage(subject, message, from_email, to_email)
-            email.send()
-
-            return redirect('success_page')  # Redirect to a success page
-
-        return render(request, self.template_name, {'form': form})
-
-
- 
