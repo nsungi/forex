@@ -16,8 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -28,7 +26,7 @@ SECRET_KEY = "django-insecure-d9d+7rs9+j1co(p5dqcu449lz10p8g8k9^hnh%7!83q0hk$)c5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['core.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','core.herokuapp.com']
 
 
 # Application definition
